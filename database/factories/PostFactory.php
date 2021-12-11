@@ -26,9 +26,6 @@ class PostFactory extends Factory
             'category_id' => function(){
                 return Category::all()->random();
             },
-            'comment_id' => function(){
-                return Comment::all()->random();
-            }
         ];
     }
 }
