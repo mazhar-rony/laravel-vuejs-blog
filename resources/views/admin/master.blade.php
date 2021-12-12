@@ -61,21 +61,21 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <router-link to="/home" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
                 <i class="right fas fa-angle-left"></i>
               </p>
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <router-link to="/category-list" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Category
               </p>
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
             <a href="../widgets.html" class="nav-link">
@@ -102,9 +102,10 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
+    
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    {{--  <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -112,11 +113,11 @@
           </div>
         </div>
       </div><!-- /.container-fluid -->
-    </section>
-
+    </section>  --}}
+    
     <!-- Main content -->
-    <section class="content">
-
+    {{--  <section class="content">
+      
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
@@ -142,7 +143,9 @@
       </div>
       <!-- /.card -->
 
-    </section>
+    </section>  --}}
+    {{--  <admin-home></admin-home>  --}}
+    <admin-master></admin-master>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
