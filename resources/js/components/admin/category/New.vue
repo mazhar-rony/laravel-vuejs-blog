@@ -12,11 +12,14 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form @submit.prevent="addCategory()">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="category">Add New Category</label>
-                    <input type="text" class="form-control" id="category" placeholder="Enter Category Name">
+                    <input type="text" class="form-control" id="category" name="name" v-model="form.name"
+                      placeholder="Enter Category Name" :class="{ 'is-invalid': form.errors.has('name') }">
+                      <!-- <div v-if="form.errors.has('name')" v-html="form.errors.get('name')" /> -->
+                      <has-error :form="form" field="name"></has-error>
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -39,7 +42,26 @@
 
 <script>
 export default {
+  name: "New",
+  data() {
+    return {
+      form: new Form({
+        name: ''
+      })
+    }
+  },
+  methods: {
+    addCategory(){
+      this.form.post('/category')
+        .then((response) => {
+          this.$router.push('/category-list');
+          this.form.name = '';
+        })
+        .catch(() => {
 
+        })
+    }
+  },
 }
 </script>
 

@@ -9,6 +9,15 @@ Vue.use(VueRouter);
 import {routes} from './routes';
 import AdminMaster from './components/admin/AdminMaster.vue';
 
+// v form
+import Form from 'vform'
+import { Button, HasError, AlertError } from 'vform/src/components/bootstrap5'
+
+window.Form = Form;
+
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
+
 import Vue from 'vue';
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 //Vue.component('admin-home', require('./components/admin/AdminHome.vue').default);
