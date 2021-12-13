@@ -41,18 +41,10 @@
                             <td>{{ category.name }}</td>
                             <td>{{ category.created_at | dateformat }}</td>
                             <td>
-                                <a href="#">Edit</a> | 
-                                <a href="#">Delete</a>
+                                <router-link :to="`/edit-category/${category.id}`">Edit</router-link>| 
+                                <a href="#" @click.prevent="deleteCategory(category.id)">Delete</a>
                             </td>
                         </tr>
-                        <!-- <tr v-for="category in getAllCategory()" v-bind:key="category.id">
-                            <td>{{ category.id }}</td>
-                            <td>{{ category.name }}</td>
-                            <td>
-                                <a href="#">Edit</a> | 
-                                <a href="#">Delete</a>
-                            </td>
-                        </tr> -->
                         </tbody>
                         <tfoot>
                         <tr>
@@ -89,7 +81,16 @@ export default {
         }
     },
     methods: {
-
+        deleteCategory(id) {
+            axios.delete('/category/' + id)
+                .then( () => {
+                    this.$store.dispatch('allCategory');
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Category deleted successfully'
+                    })
+                })
+        }
     }
 }
 </script>

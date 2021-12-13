@@ -76,7 +76,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+
+        return response()->json([
+            'category' => $category
+        ], 200);
     }
 
     /**
@@ -88,7 +92,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:2|max:12'
+        ]);
+
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $result = $category->save();
+
+        if($result)
+        {
+            return ['message' => 'data has been updated'];
+        }
+        else
+        {
+            return ['message' => 'error updating data'];
+        }
     }
 
     /**
@@ -99,6 +118,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+
+        $category->delete();
     }
 }

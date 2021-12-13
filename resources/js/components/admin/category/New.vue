@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="content">
+      <section class="content">
       <div class="container-fluid">
         <div class="row justify-content-center">
           <!-- left column -->
