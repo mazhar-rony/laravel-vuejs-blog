@@ -35,22 +35,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Catgory 1</td>
+                        <tr v-for="(category, index) in getAllCategory" v-bind:key="category.id">
+                            <td>{{ index+1 }}</td>
+                            <td>{{ category.name }}</td>
                             <td>
                                 <a href="#">Edit</a> | 
                                 <a href="#">Delete</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Catgory 2</td>
+                        <!-- <tr v-for="category in getAllCategory()" v-bind:key="category.id">
+                            <td>{{ category.id }}</td>
+                            <td>{{ category.name }}</td>
                             <td>
                                 <a href="#">Edit</a> | 
                                 <a href="#">Delete</a>
                             </td>
-                        </tr>
+                        </tr> -->
                         </tbody>
                         <tfoot>
                         <tr>
@@ -76,7 +76,18 @@
 
 <script>
 export default {
+    name: "List",
+    mounted() {
+        this.$store.dispatch('allCategory');
+    },
+    computed: {
+        getAllCategory(){
+            return this.$store.getters.getCategory;
+        }
+    },
+    methods: {
 
+    }
 }
 </script>
 

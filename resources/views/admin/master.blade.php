@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  {{-- <base href="http://127.0.0.1:8000/" target="_blank"> --}}
   <title>AdminLTE 3 | Blank Page</title>
   <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
