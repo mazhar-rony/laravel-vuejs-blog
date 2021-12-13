@@ -31,6 +31,7 @@
                         <tr>
                             <th>Sl</th>
                             <th>Category Name</th>
+                            <th>Created At</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -38,6 +39,7 @@
                         <tr v-for="(category, index) in getAllCategory" v-bind:key="category.id">
                             <td>{{ index+1 }}</td>
                             <td>{{ category.name }}</td>
+                            <td>{{ category.created_at | dateformat }}</td>
                             <td>
                                 <a href="#">Edit</a> | 
                                 <a href="#">Delete</a>
@@ -56,6 +58,7 @@
                         <tr>
                             <th>Sl</th>
                             <th>Category Name</th>
+                            <th>Created At</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>

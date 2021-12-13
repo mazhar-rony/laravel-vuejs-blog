@@ -29,6 +29,17 @@ window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
+// moment js
+import filter from './filter'
+//this portion done in filter.js file
+/* import moment from 'moment'
+
+ Vue.filter('dateformat', (arg)=>{
+  //return moment(arg).format("MMM Do YYYY")
+  return moment(arg, "YYYYMMDD").fromNow()
+ })*/
+//end moment js
+
 // sweet alert 2
 import Swal from 'sweetalert2'
 
