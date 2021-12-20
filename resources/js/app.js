@@ -29,6 +29,14 @@ window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
+// markdown editor
+//import 'v-markdown-editor/dist/index.css';
+import 'v-markdown-editor/dist/v-markdown-editor.css'
+
+import Editor from 'v-markdown-editor'
+
+Vue.use(Editor);
+
 // moment js
 import filter from './filter'
 //this portion done in filter.js file
