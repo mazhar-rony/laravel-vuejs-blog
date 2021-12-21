@@ -19,6 +19,7 @@ Vue.use(VueRouter);
 
 import {routes} from './routes';
 import AdminMaster from './components/admin/AdminMaster.vue';
+import PublicMaster from './components/public/PublicMaster.vue';
 
 // v form
 import Form from 'vform'
@@ -77,6 +78,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 //Vue.component('admin-home', require('./components/admin/AdminHome.vue').default);
 //Vue.component('admin-master', require('./components/admin/AdminMaster.vue').default);
 Vue.component('admin-master', AdminMaster);
+Vue.component('public-master', PublicMaster);
 
 const router = new VueRouter({
     mode: 'hash',

@@ -5,6 +5,9 @@ import EditCategory from './components/admin/category/Edit.vue'
 import PostList from './components/admin/post/List.vue'
 import AddPost from './components/admin/post/New.vue'
 import EditPost from './components/admin/post/Edit.vue'
+import PublicHome from './components/public/PublicHome.vue'
+import BlogPost from './components/public/blog/BlogPost.vue'
+import SingleBlog from './components/public/blog/SingleBlog.vue'
 
 export const routes = [
     {   
@@ -34,5 +37,17 @@ export const routes = [
     {
         path: '/edit-post/:id',
         component: EditPost
-    }
+    },
+    {
+        path: '/',
+        component: PublicHome
+    },
+    {
+        path: '/Blog',
+        component: BlogPost
+    },
+    {
+        path: '/blog-single/:id',
+        component: SingleBlog
+    },
 ]

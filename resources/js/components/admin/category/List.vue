@@ -40,9 +40,9 @@
                             <td>{{ index+1 }}</td>
                             <td>{{ category.name }}</td>
                             <td>{{ category.created_at | dateformat }}</td>
-                            <td>
-                                <router-link :to="`/edit-category/${category.id}`">Edit</router-link>| 
-                                <a href="#" @click.prevent="deleteCategory(category.id)">Delete</a>
+                            <td style="white-space: nowrap;" class="text-center">
+                                <router-link :to="`/edit-category/${category.id}`"><button class="btn btn-warning"><i class="fas fa-edit"></i></button></router-link> | 
+                                <a href="#" @click.prevent="deleteCategory(category.id)"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
                             </td>
                         </tr>
                         </tbody>

@@ -72,7 +72,7 @@
           </li>
           <li class="nav-item">
             <router-link to="/category-list" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-list-alt"></i>
               <p>
                 Category
               </p>
@@ -80,7 +80,7 @@
           </li>
           <li class="nav-item">
             <router-link to="/post-list" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-file"></i>
               <p>
                 Post
               </p>
@@ -88,7 +88,7 @@
           </li>
           <li class="nav-item">
             <a href="../widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-comment"></i>
               <p>
                 Comment
                 <span class="right badge badge-danger">New</span>

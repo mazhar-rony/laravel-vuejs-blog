@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +17,23 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return view('public.index');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 //Route::get('/{anypath}', [App\Http\Controllers\HomeController::class, 'index'])->where('path', '.*');
 
-Route::resource('category', CategoryController::class);
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('post', PostController::class);
+    Route::resource('category', CategoryController::class);
+
+    Route::resource('post', PostController::class);
+});
+
+Route::get('/blogpost', [BlogController::class, 'allBlogPost']);
+Route::get('/singlepost/{id}', [BlogController::class, 'getPostById']);
+
 

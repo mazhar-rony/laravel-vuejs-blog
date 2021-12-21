@@ -56,7 +56,7 @@ class PostController extends Controller
 
         //http://image.intervention.io/getting_started/installation#laravel
         //image intervention
-        $img = Image::make($request->image)->resize(300, 300);
+        $img = Image::make($request->image)->resize(1280, 720);
         $img->save($upload_path.$name);
 
         $post = new Post();
@@ -131,7 +131,7 @@ class PostController extends Controller
 
             //http://image.intervention.io/getting_started/installation#laravel
             //image intervention
-            $img = Image::make($request->image)->resize(300, 300);
+            $img = Image::make($request->image)->resize(1280, 720);
             $img->save($upload_path.$name);
 
             // remove existing image from file storage

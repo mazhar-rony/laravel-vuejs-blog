@@ -48,9 +48,9 @@
                             <!-- <td><img :src="post.image" :alt="post.image" width="50px" height="50px"></td> -->
                             <!-- <td><img :src="'/uploadimage/'+post.image" alt="" width="50" height="50"></td> -->
                             <td><img :src="postImage(post.image)" alt="" width="50" height="50"></td>
-                            <td>
-                                <router-link :to="`/edit-post/${post.id}`">Edit</router-link> | 
-                                <a href="#" @click.prevent="deletePost(post.id)">Delete</a>
+                            <td style="white-space: nowrap;">
+                                <router-link :to="`/edit-post/${post.id}`"><button class="btn btn-warning"><i class="fas fa-edit"></i></button></router-link> | 
+                                <a href="#" @click.prevent="deletePost(post.id)"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
                             </td>
                         </tr>
                         </tbody>
