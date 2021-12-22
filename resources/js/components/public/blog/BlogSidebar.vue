@@ -7,7 +7,7 @@
               <h3 class="sidebar-title">Search</h3>
               <div class="sidebar-item search-form">
                 <form action="">
-                  <input type="text" v-model="keyword">
+                  <input type="text" @keyup="searchPost" v-model="keyword">
                   <button type="submit" @click.prevent="searchPost"><i class="bi bi-search"></i></button>
                 </form>
               </div><!-- End sidebar search formn-->
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 export default {
     name: "BlogSidebar",
     data() {
@@ -82,9 +83,12 @@ export default {
               return "uploadimage/" + img; // uploded images
           }
       },
-      searchPost(){
-        this.$store.dispatch('searchPost', this.keyword);
-      }
+      // searchPost(){
+      //   this.$store.dispatch('searchPost', this.keyword);
+      // }
+      searchPost:_.debounce(function() {
+            this.$store.dispatch('searchPost', this.keyword)
+        }, 1000)
     }
 }
 </script>

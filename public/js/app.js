@@ -8780,6 +8780,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -8835,6 +8837,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "BlogSidebar",
   data: function data() {
@@ -8863,9 +8866,12 @@ __webpack_require__.r(__webpack_exports__);
         return "uploadimage/" + img; // uploded images
       }
     },
-    searchPost: function searchPost() {
+    // searchPost(){
+    //   this.$store.dispatch('searchPost', this.keyword);
+    // }
+    searchPost: lodash__WEBPACK_IMPORTED_MODULE_0___default().debounce(function () {
       this.$store.dispatch('searchPost', this.keyword);
-    }
+    }, 1000)
   }
 });
 
@@ -92731,6 +92737,7 @@ var render = function () {
               attrs: { type: "text" },
               domProps: { value: _vm.keyword },
               on: {
+                keyup: _vm.searchPost,
                 input: function ($event) {
                   if ($event.target.composing) {
                     return

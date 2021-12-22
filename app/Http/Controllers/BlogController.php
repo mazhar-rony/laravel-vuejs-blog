@@ -57,13 +57,25 @@ class BlogController extends Controller
     {
         $search = \Request::get('q');
 
-        $searchpost = Post::with('user','category')
+        if($search != null)
+        {
+            $searchpost = Post::with('user','category')
                     ->where('title', 'LIKE', "%$search%")
                     ->orWhere('description', 'LIKE', "%$search%")
-                    ->get();
+                    ->orderBy('id', 'DESC')->get();
 
             return response()->json([
                 'searchpost' => $searchpost
             ], 200);
+        }
+        else
+        {
+            $searchpost = Post::with('category', 'user')->latest()->get();
+
+            return response()->json([
+                'searchpost' => $searchpost
+            ], 200);
+        }
+        
     }
 }
