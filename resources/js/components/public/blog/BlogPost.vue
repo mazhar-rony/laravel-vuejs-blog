@@ -33,6 +33,7 @@
                             <ul>
                                 <li v-if="post.title" class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">{{ post.user.name }}</a></li>
                                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01">{{ post.created_at | dateformat }}</time></a></li>
+                                <li v-if="post.category" class="d-flex align-items-center"><i class="bi bi-folder"></i> <a href="#">{{ post.category.name }}</a></li>
                                 <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#">{{Math.floor((Math.random() * 15) + 1)}} Comments</a></li>
                             </ul>
                             </div>
@@ -93,8 +94,20 @@ export default {
                 return "uploadimage/" + img; // uploded images
             }
         },
+        categoryWisePost() {
+            //routes between all blogs and category wise blog
+            if(this.$route.params.id != null) {
+                this.$store.dispatch('getPostByCategory', this.$route.params.id)             
+            }else {
+                this.$store.dispatch('allBlogPost')
+            }
+        }
+    },
+    watch: {
+        $route(to, from) {
+            this.categoryWisePost()
+        }
     }
-
 }
 </script>
 

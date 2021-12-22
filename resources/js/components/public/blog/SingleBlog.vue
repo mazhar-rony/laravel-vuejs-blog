@@ -134,7 +134,7 @@ export default {
         }
     },
     mounted() {
-        this.$store.dispatch('singlePostById', this.$route.params.id);
+        this.showSinglePost();
     },
     computed: {
         singlepost(){
@@ -150,6 +150,14 @@ export default {
                 return "uploadimage/" + img; // uploded images
             }
         },
+        showSinglePost(){
+            this.$store.dispatch('singlePostById', this.$route.params.id);
+        }
+    },
+    watch: {
+        $route(to, from){
+            this.showSinglePost();
+        }
     }
 }
 </script>

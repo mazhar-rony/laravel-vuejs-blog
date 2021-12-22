@@ -7,53 +7,26 @@
               <h3 class="sidebar-title">Search</h3>
               <div class="sidebar-item search-form">
                 <form action="">
-                  <input type="text">
-                  <button type="submit"><i class="bi bi-search"></i></button>
+                  <input type="text" v-model="keyword">
+                  <button type="submit" @click.prevent="searchPost"><i class="bi bi-search"></i></button>
                 </form>
               </div><!-- End sidebar search formn-->
 
               <h3 class="sidebar-title">Categories</h3>
               <div class="sidebar-item categories">
                 <ul>
-                  <li><a href="#">General <span>(25)</span></a></li>
-                  <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                  <li><a href="#">Travel <span>(5)</span></a></li>
-                  <li><a href="#">Design <span>(22)</span></a></li>
-                  <li><a href="#">Creative <span>(8)</span></a></li>
-                  <li><a href="#">Educaion <span>(14)</span></a></li>
+                  <li v-for="category in allcategories" :key="category.id">
+                    <router-link :to="`/category/${category.id}`">{{ category.name }} <span v-if="category.posts">( {{ category.posts.length }} )</span></router-link>
+                  </li>
                 </ul>
               </div><!-- End sidebar categories-->
 
               <h3 class="sidebar-title">Recent Posts</h3>
-              <div class="sidebar-item recent-posts">
+              <div v-for="post in latestposts" :key="post.id" class="sidebar-item recent-posts">
                 <div class="post-item clearfix">
-                  <!-- <img :src="assets/img/blog/blog-recent-1.jpg" alt=""> -->
-                  <h4><a href="blog-single.html">Nihil blanditiis at in nihil autem</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <!-- <img :src="assets/img/blog/blog-recent-2.jpg" alt=""> -->
-                  <h4><a href="blog-single.html">Quidem autem et impedit</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <!-- <img :src="assets/img/blog/blog-recent-3.jpg" alt=""> -->
-                  <h4><a href="blog-single.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <!-- <img :src="assets/img/blog/blog-recent-4.jpg" alt=""> -->
-                  <h4><a href="blog-single.html">Laborum corporis quo dara net para</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <!-- <img :src="assets/img/blog/blog-recent-5.jpg" alt=""> -->
-                  <h4><a href="blog-single.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
+                  <img :src="postImage(post.image)" alt="">
+                  <h4><router-link :to="`/blog-single/${post.id}`">{{ post.title }}</router-link></h4>
+                  <time datetime="2020-01-01">{{ post.created_at | dateformat }}</time>
                 </div>
 
               </div><!-- End sidebar recent posts-->
@@ -83,6 +56,36 @@
 <script>
 export default {
     name: "BlogSidebar",
+    data() {
+      return {
+        keyword: ''
+      }
+    },
+    mounted() {
+      this.$store.dispatch('allCategories');
+      this.$store.dispatch('latestPosts');
+    },
+    computed: {
+      allcategories(){
+        return this.$store.getters.getAllCategories;
+      },
+      latestposts(){
+        return this.$store.getters.getLatestPosts;
+      }
+    },
+    methods: {
+      postImage(img) {
+          if (img.includes('https')) { // fake images
+              return img;
+          }
+          else{
+              return "uploadimage/" + img; // uploded images
+          }
+      },
+      searchPost(){
+        this.$store.dispatch('searchPost', this.keyword);
+      }
+    }
 }
 </script>
 

@@ -38,6 +38,7 @@ export const routes = [
         path: '/edit-post/:id',
         component: EditPost
     },
+    //FrontEnd Route
     {
         path: '/',
         component: PublicHome
@@ -49,5 +50,9 @@ export const routes = [
     {
         path: '/blog-single/:id',
         component: SingleBlog
+    },
+    {
+        path: '/category/:id',
+        component: BlogPost
     },
 ]

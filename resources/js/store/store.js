@@ -5,7 +5,9 @@ export default {
         category: [],
         post: [],
         blogpost: [],
-        singlepost: []
+        singlepost: [],
+        allCategories: [],
+        latestposts: []
     },
     getters: {
         getCategory(state){
@@ -19,6 +21,13 @@ export default {
         },
         getSinglePost(state){
             return state.singlepost
+        },
+        // for blog sidebar
+        getAllCategories(state){
+            return state.allCategories
+        },
+        getLatestPosts(state){
+            return state.latestposts
         }
     },
     actions: {
@@ -45,6 +54,31 @@ export default {
                 .then((response) => {
                     context.commit('singlepost', response.data.post);
                 })
+        },
+        // for blog sidebar
+        allCategories(context){
+            axios.get('/categories')
+                .then((response) => {
+                    context.commit('allcategories', response.data.categories);
+                })
+        },
+        latestPosts(context){
+            axios.get('/latestposts')
+                .then((response) => {
+                    context.commit('latestposts', response.data.latestposts);
+                })
+        },
+        getPostByCategory(context, payload){
+            axios.get('/categorypost/' + payload)
+                .then((response) => {
+                    context.commit('blogposts', response.data.categoryposts);
+                })
+        },
+        searchPost(context, payload){
+            axios.get('/search?q=' + payload)
+                .then((response) => {
+                    context.commit('searchpost', response.data.searchpost);
+                })
         }
     },
     mutations: {
@@ -59,6 +93,15 @@ export default {
         },
         singlepost(state, payload){
             return state.singlepost = payload;
+        },
+        allcategories(state, payload){
+            return state.allCategories = payload;
+        },
+        latestposts(state, payload){
+            return state.latestposts = payload;
+        },
+        searchpost(state, payload){
+            return state.blogpost = payload;
         }
     }
 }
