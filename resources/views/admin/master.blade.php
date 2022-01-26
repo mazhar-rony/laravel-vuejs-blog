@@ -87,7 +87,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-comment"></i>
               <p>
                 Comment
@@ -95,6 +95,19 @@
               </p>
             </a>
           </li>
+        <hr style="color: #fff">
+        <li class="nav-item">
+          <a href="/logout" class="nav-link" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+            <i class="nav-icon fas fa-sign-out-alt"></i>
+            <p>
+              Logout
+            </p>
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+          </form>
+        </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

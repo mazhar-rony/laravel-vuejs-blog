@@ -82,7 +82,8 @@ export default {
     },
     methods: {
         deleteCategory(id) {
-            axios.delete('/category/' + id)
+            // axios.delete('/category/' + id) // web route
+            axios.delete('/api/category/' + id) // api route
                 .then( () => {
                     this.$store.dispatch('allCategory');
                     Toast.fire({

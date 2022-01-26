@@ -52,14 +52,16 @@ export default {
         }
     },
     mounted() {
-        axios.get(`/category/${this.$route.params.id}/edit`)
+        // axios.get(`/category/${this.$route.params.id}/edit`) // web route
+        axios.get(`/api/category/${this.$route.params.id}`) // api route
             .then((response) => {
                 this.form.fill(response.data.category);
             })
     },
     methods: {
         updateCategory(){
-            this.form.put(`/category/${this.$route.params.id}`)
+            // this.form.put(`/category/${this.$route.params.id}`) // web route
+            this.form.put(`/api/category/${this.$route.params.id}`) // api route
                 .then((response) => {
                     this.$router.push('/category-list');          
                     Toast.fire({

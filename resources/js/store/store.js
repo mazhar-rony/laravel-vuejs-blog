@@ -32,7 +32,8 @@ export default {
     },
     actions: {
         allCategory(context){
-            axios.get('/category')
+            // axios.get('/category') // web route
+            axios.get('/api/category') // api route
                 .then((response) => {
                     context.commit('categories', response.data.categories);
                 })

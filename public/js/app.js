@@ -7928,7 +7928,9 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/category/".concat(this.$route.params.id, "/edit")).then(function (response) {
+    // axios.get(`/category/${this.$route.params.id}/edit`) // web route
+    axios.get("/api/category/".concat(this.$route.params.id)) // api route
+    .then(function (response) {
       _this.form.fill(response.data.category);
     });
   },
@@ -7936,7 +7938,9 @@ __webpack_require__.r(__webpack_exports__);
     updateCategory: function updateCategory() {
       var _this2 = this;
 
-      this.form.put("/category/".concat(this.$route.params.id)).then(function (response) {
+      // this.form.put(`/category/${this.$route.params.id}`) // web route
+      this.form.put("/api/category/".concat(this.$route.params.id)) // api route
+      .then(function (response) {
         _this2.$router.push('/category-list');
 
         Toast.fire({
@@ -8046,7 +8050,9 @@ __webpack_require__.r(__webpack_exports__);
     deleteCategory: function deleteCategory(id) {
       var _this = this;
 
-      axios["delete"]('/category/' + id).then(function () {
+      // axios.delete('/category/' + id) // web route
+      axios["delete"]('/api/category/' + id) // api route
+      .then(function () {
         _this.$store.dispatch('allCategory');
 
         Toast.fire({
@@ -8126,7 +8132,9 @@ __webpack_require__.r(__webpack_exports__);
     addCategory: function addCategory() {
       var _this = this;
 
-      this.form.post('/category').then(function (response) {
+      // this.form.post('/category') // web route
+      this.form.post('/api/category') // api route
+      .then(function (response) {
         _this.form.name = '';
 
         _this.$router.push('/category-list');
@@ -9325,7 +9333,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   actions: {
     allCategory: function allCategory(context) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/category').then(function (response) {
+      // axios.get('/category') // web route
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/category') // api route
+      .then(function (response) {
         context.commit('categories', response.data.categories);
       });
     },

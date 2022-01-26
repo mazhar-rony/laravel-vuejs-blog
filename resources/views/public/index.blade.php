@@ -59,8 +59,8 @@
           {{--  <li><a class="active" href="blog.html">Blog</a></li>  --}}
           <li><router-link to="/blog" class="nav-link scrollto">Blog</router-link></li>          
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Login</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Sign Up</a></li>
+          <li><a class="nav-link scrollto" href="/login">Login</a></li>
+          <li><a class="nav-link scrollto" href="/register">Sign Up</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
